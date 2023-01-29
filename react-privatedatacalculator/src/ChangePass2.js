@@ -36,7 +36,7 @@ const ChangePass2 = () => {
             <div className="app" >
                 <div className="label-holder"> <label className="lable2" >Password Change</label>
 
-                    <input style={{ marginTop: "20px", borderRadius: "15px", width: "250px", height: "40px", border: "15px green" }} type="text" placeholder="new password" value={NewPassword}
+                    <input style={{ marginTop: "20px", borderRadius: "15px", width: "250px", height: "40px", border: "15px green",padding:"10px" }} type="text" placeholder="new password" value={NewPassword}
                         onChange={handleOnchange}
 
                     />
