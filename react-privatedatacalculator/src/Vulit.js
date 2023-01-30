@@ -1,35 +1,36 @@
 import "./Vulit.css"
 import React from "react";
-import { useState,  } from "react";
+import { useState,useEffect  } from "react";
 
 
 
 
 function Private1() {
   const [Image, setImage] = useState([]);
+ 
 
+  if(!(JSON.parse(localStorage.getItem("file")))){
+    localStorage.setItem("file" ,JSON.stringify([]) )
+  }
 
+  let yash= JSON.parse(localStorage.getItem("file"))
+  useEffect(() => {
 
+  
 
+    if((localStorage.getItem("file")).length>0){
+      setImage((prevImages) => prevImages.concat(yash))
+    }
+  }, []);
 
-
-
-
-
+  
 
   const imageHandleChange = (e) => {
     // console.log(e.target.files)
 
     if (e.target.files) {
-      const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file))
-      // console.log(fileArray)
-
-      // localStorage.setItem("fileArray" ,fileArray )
-
-
-
-
-
+      const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file)
+      )
       setImage((prevImages) => prevImages.concat(fileArray))
       Array.from(e.target.files).map(
         (file) => URL.revokeObjectURL(file)           //fresh
@@ -38,20 +39,27 @@ function Private1() {
     }
   }
 
+  
+
   const renderPhotos = (source) => {
+
+    localStorage.setItem("file" ,JSON.stringify(source) )
+
+    
     return source.map((photo,index) => {
+   
+
       return <div key={index}> <img src={photo} key={photo} alt='IMAGE' /> <br/>
       <button style={{borderRadius:"10px", padding:"3px" ,fontSize:"1rem" ,backgroundColor:"lightcoral" , border:"3px" , cursor:"pointer", marginLeft:"170px" }} onClick={()=>{
         setImage(Image.filter((e)=>e!==photo))
       }} >Delete image</button>
       
       </div>
-       
-      
-      
       
     })
+
   }
+  //console.log(arr)
   return (
     <>
       <div className="app">

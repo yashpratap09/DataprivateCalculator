@@ -18,9 +18,21 @@ and then same we have a also one more hidden option it means new option that a n
 
 # we can also delete hidden files/data
 
-
-it this project I not use a any datastorage but we can also connected a backend and store data in any data base. but here i not use any storage.
+# Here we can use a temporarily URL so after reloading URL is expired/Invalid   but we can also use ka Aws and other Url Generator.
 
 
 
 # // here we use a react and HTML and CSS and also use a Bootstrap.
+
+
+
+
+
+
+
+# Normally calculators Me hum Ek password se data ko hide kar sakte Hai but esme hm 2 alag alag jagah par data ko store/hide kar sakte Hai.
+
+Yaha par hum temporarily URL generator ka use kr rahe hai to reloading ke baad URL Expired/invalid ho jata hai . to eske liye hm yaha pr AWS and or bhi Permanent URL generator ka use kr skte hai .
+
+
+and password ko change bhi kr skte hai. 

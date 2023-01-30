@@ -1,12 +1,30 @@
 import "./Vulit.css"
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 
 
 
 function Private2() {
   const [Image, setImage] = useState([]);
+
+  
+  if(!(JSON.parse(localStorage.getItem("file2")))){
+    localStorage.setItem("file2" ,JSON.stringify([]) )
+  }
+
+  
+  let yash= JSON.parse(localStorage.getItem("file2"))
+  useEffect(() => {
+
+  
+
+    if((localStorage.getItem("file2")).length>0){
+      setImage((prevImages) => prevImages.concat(yash))
+    }
+  }, []);
+
+
 
   const imageHandleChange = (e) => {
     // console.log(e.target.files)
@@ -25,6 +43,7 @@ function Private2() {
   }
 
   const renderPhotos = (source) => {
+    localStorage.setItem("file2" ,JSON.stringify(source) )
     return source.map((photo,index) => {
       return <div key={index}> <img src={photo} key={photo} alt='IMAGE' /> <br/>
       <button style={{borderRadius:"10px", padding:"3px" ,fontSize:"1rem" ,backgroundColor:"lightcoral" , border:"3px" , cursor:"pointer", marginLeft:"170px" }} onClick={()=>{
