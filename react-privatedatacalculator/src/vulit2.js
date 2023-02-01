@@ -6,7 +6,7 @@ import { useState,useEffect } from "react";
 
 
 function Private2() {
-  const [pic, setpic] = useState([]);
+  const [Image, setImage] = useState([]);
 
   
   if(!(JSON.parse(localStorage.getItem("file2")))){
@@ -20,13 +20,13 @@ function Private2() {
   
 
     if((localStorage.getItem("file2")).length>0){
-      setpic((prevpics) => prevpics.concat(yash))
+      setImage((prevImages) => prevImages.concat(yash))
     }
-  }, [yash]);
+  }, []);
 
 
 
-  const picHandleChange = (e) => {
+  const imageHandleChange = (e) => {
     // console.log(e.target.files)
 
     if (e.target.files) {
@@ -34,7 +34,7 @@ function Private2() {
       // console.log(fileArray)
 
       // localStorage.setItem("fileArray" ,fileArray )
-      setpic((prevpics) => prevpics.concat(fileArray))
+      setImage((prevImages) => prevImages.concat(fileArray))
       Array.from(e.target.files).map(
         (file) => URL.revokeObjectURL(file)           //fresh
 
@@ -42,13 +42,13 @@ function Private2() {
     }
   }
 
-  const renderlooks = (source) => {
+  const renderPhotos = (source) => {
     localStorage.setItem("file2" ,JSON.stringify(source) )
-    return source.map((look,index) => {
-      return <div key={index}> <img src={look} key={look} alt='pic' /> <br/>
+    return source.map((photo,index) => {
+      return <div key={index}> <img src={photo} key={photo} alt='IMAGE' /> <br/>
       <button style={{borderRadius:"10px", padding:"3px" ,fontSize:"1rem" ,backgroundColor:"lightcoral" , border:"3px" , cursor:"pointer", marginLeft:"170px" }} onClick={()=>{
-        setpic(pic.filter((e)=>e!==look))
-      }} >Delete pic</button>
+        setImage(Image.filter((e)=>e!==photo))
+      }} >Delete image</button>
       
       </div>
        
@@ -67,12 +67,12 @@ function Private2() {
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/changePass2">ChangePassword</a></li>
             
-            <li><a class="dropdown-item" href="/">About</a></li>
+            <li><a class="dropdown-item" href="#">About</a></li>
           </ul>
         </div>
 
         <div>
-          <input type="file" id="file" multiple onChange={picHandleChange} />
+          <input type="file" id="file" multiple onChange={imageHandleChange} />
 
           <div className="label-holder">
             <label htmlFor="file" className="label" >
@@ -81,7 +81,7 @@ function Private2() {
           </div>
 
           <div className="result" >
-            {renderlooks(pic)}
+            {renderPhotos(Image)}
             
 
           </div>
