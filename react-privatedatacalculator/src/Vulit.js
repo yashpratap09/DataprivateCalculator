@@ -9,16 +9,16 @@ function Private1() {
   const [Image, setImage] = useState([]);
  
 
-  if(!(JSON.parse(localStorage.getItem("file")))){
-    localStorage.setItem("file" ,JSON.stringify([]) )
+  if(!(JSON.parse(localStorage.getItem("file1")))){
+    localStorage.setItem("file1" ,JSON.stringify([]) )
   }
 
-  let yash= JSON.parse(localStorage.getItem("file"))
+  let yash= JSON.parse(localStorage.getItem("file1"))
   useEffect(() => {
 
   
 
-    if((localStorage.getItem("file")).length>0){
+    if((localStorage.getItem("file1")).length>0){
       setImage((prevImages) => prevImages.concat(yash))
     }
   }, []);
@@ -43,7 +43,7 @@ function Private1() {
 
   const renderPhotos = (source) => {
 
-    localStorage.setItem("file" ,JSON.stringify(source) )
+    localStorage.setItem("file1" ,JSON.stringify(source) )
 
     
     return source.map((photo,index) => {
